@@ -262,6 +262,7 @@ format_filename = function(startTime, endTime, videoFormat)
     ["%%T"] = mp.get_property("media-title"),
     ["%%M"] = (mp.get_property_native('aid') and not mp.get_property_native('mute') and hasAudioCodec) and '-audio' or '',
     ["%%R"] = (options.scale_height ~= -1) and "-" .. tostring(options.scale_height) .. "p" or "-" .. tostring(mp.get_property_native('height')) .. "p",
+    ["%%mb"] = (options.target_filesize/1000),
     ["%%t%%"] = "%%"
   }
   local filename = options.output_template
