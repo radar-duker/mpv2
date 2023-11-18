@@ -264,7 +264,7 @@ format_filename = function(startTime, endTime, videoFormat)
     ["%%T"] = mp.get_property("media-title"),
     ["%%M"] = (mp.get_property_native('aid') and not mp.get_property_native('mute') and hasAudioCodec) and '-audio' or '',
     ["%%R"] = (options.scale_height ~= -1) and "-" .. tostring(options.scale_height) .. "p" or "-" .. tostring(mp.get_property_native('height')) .. "p",
-    ["%%mb"] = options.target_filesize/1000,
+    ["%%mb"] = options.target_filesize / 1000,
     ["%%t%%"] = "%%"
   }
   local filename = options.output_template
@@ -2829,6 +2829,12 @@ do
         return self:draw()
       end
     end,
+    jumpToStartTime = function(self)
+      return mp.set_property("time-pos", self.startTime)
+    end,
+    jumpToEndTime = function(self)
+      return mp.set_property("time-pos", self.endTime)
+    end,
     setupStartAndEndTimes = function(self)
       if mp.get_property_native("duration") then
         self.startTime = 0
@@ -2851,6 +2857,8 @@ do
       ass:append(tostring(bold('c:')) .. " crop\\N")
       ass:append(tostring(bold('1:')) .. " set start time (current is " .. tostring(seconds_to_time_string(self.startTime)) .. ")\\N")
       ass:append(tostring(bold('2:')) .. " set end time (current is " .. tostring(seconds_to_time_string(self.endTime)) .. ")\\N")
+      ass:append(tostring(bold('!:')) .. " jump to start time\\N")
+      ass:append(tostring(bold('@:')) .. " jump to end time\\N")
       ass:append(tostring(bold('o:')) .. " change encode options\\N")
       ass:append(tostring(bold('p:')) .. " preview\\N")
       ass:append(tostring(bold('e:')) .. " encode\\N\\N")
@@ -2945,6 +2953,20 @@ do
         ["2"] = (function()
           local _base_1 = self
           local _fn_0 = _base_1.setEndTime
+          return function(...)
+            return _fn_0(_base_1, ...)
+          end
+        end)(),
+        ["!"] = (function()
+          local _base_1 = self
+          local _fn_0 = _base_1.jumpToStartTime
+          return function(...)
+            return _fn_0(_base_1, ...)
+          end
+        end)(),
+        ["@"] = (function()
+          local _base_1 = self
+          local _fn_0 = _base_1.jumpToEndTime
           return function(...)
             return _fn_0(_base_1, ...)
           end
