@@ -15,38 +15,8 @@ function get_target_ar(file_ar)
     crop_option = crop_option + 1
 
     if crop_option == 1 then
-        mp.osd_message("Crop: 16:10")
-        result = 16 / 10
-    elseif crop_option == 2 then
-        mp.osd_message("Crop: 16:9")
-        result = 16 / 9
-    elseif crop_option == 3 then
         mp.osd_message("Crop: 4:3")
         result = 4 / 3
-    elseif crop_option == 4 then
-        mp.osd_message("Crop: 1.85:1")
-        result = 1.85 / 1
-    elseif crop_option == 5 then
-        mp.osd_message("Crop: 2.21:1")
-        result = 2.21 / 1
-    elseif crop_option == 6 then
-        mp.osd_message("Crop: 2.35:1")
-        result = 2.35 / 1
-    elseif crop_option == 7 then
-        mp.osd_message("Crop: 2.39:1")
-        result = 2.39 / 1
-    elseif crop_option == 8 then
-        mp.osd_message("Crop: 5:3")
-        result = 5 / 3
-    elseif crop_option == 9 then
-        mp.osd_message("Crop: 5:4")
-        result = 5 / 4
-    elseif crop_option == 10 then
-        mp.osd_message("Crop: 1:1")
-        result = 1 / 1
-    elseif crop_option == 11 then
-        mp.osd_message("Crop: 9:16")
-        result = 9 / 16
     else
         mp.osd_message("Crop: Default")
         crop_option = 0
@@ -137,6 +107,5 @@ function on_start()
     crop_option = 0 -- Reset crop option
 end
 
-mp.add_key_binding("A", "toggle_crop", on_press)
 mp.add_key_binding("a", "toggle_crop", on_press)
 mp.register_event("file-loaded", on_start)

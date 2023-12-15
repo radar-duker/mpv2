@@ -350,13 +350,6 @@ function start_crop(mode)
         return
     end
     local mode_maybe = mode or opts.mode
-    if mode_maybe ~= 'soft' then
-        local hwdec = mp.get_property("hwdec-current")
-        if hwdec and hwdec ~= "no" and not string.find(hwdec, "-copy$") then
-            msg.error("Cannot crop with hardware decoding active (see manual)")
-            return
-        end
-    end
     active = true
     active_mode = mode_maybe
 
