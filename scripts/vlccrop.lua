@@ -107,5 +107,5 @@ function on_start()
     crop_option = 0 -- Reset crop option
 end
 
-mp.add_key_binding("a", "toggle_crop", on_press)
+mp.add_key_binding("C", "toggle_crop", on_press)
 mp.register_event("file-loaded", on_start)
