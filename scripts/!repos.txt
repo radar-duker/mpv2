@@ -3,11 +3,6 @@ crop.lua
 https://github.com/occivink/mpv-scripts/
 
 
-vlccrop.lua
-
-https://github.com/kism/mpvscripts/
-
-
 webm.lua
 
 https://github.com/ekisu/mpv-webm/
