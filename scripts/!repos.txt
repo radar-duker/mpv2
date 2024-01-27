@@ -1,8 +1,0 @@
-crop.lua
-
-https://github.com/occivink/mpv-scripts/
-
-
-webm.lua
-
-https://github.com/ekisu/mpv-webm/
